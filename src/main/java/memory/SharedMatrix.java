@@ -5,19 +5,38 @@ public class SharedMatrix {
     private volatile SharedVector[] vectors = {}; // underlying vectors
 
     public SharedMatrix() {
-        // TODO: initialize empty matrix
+        vectors = new SharedVector[0];
     }
 
     public SharedMatrix(double[][] matrix) {
-        // TODO: construct matrix as row-major SharedVectors
+        int len = matrix.length;
+        this.vectors = new SharedVector[len];
+        for(int i = 0; i < len; i++){
+            this.vectors[i] = new SharedVector(matrix[i].clone(), VectorOrientation.ROW_MAJOR);
+        }
     }
 
     public void loadRowMajor(double[][] matrix) {
-        // TODO: replace internal data with new row-major matrix
+        int len = matrix.length;
+        SharedVector[] newVectors = new SharedVector[len];
+        for(int i = 0; i < len; i++){
+            newVectors[i] = new SharedVector(matrix[i].clone(), VectorOrientation.ROW_MAJOR);
+        }
+
+        this.vectors = newVectors;
     }
 
     public void loadColumnMajor(double[][] matrix) {
-        // TODO: replace internal data with new column-major matrix
+        int len = matrix[0].length;
+        SharedVector[] newVectors = new SharedVector[len];
+        for(int i = 0; i < len; i++){
+            double[] column = new double[matrix.length];
+            for(int j = 0; j < matrix.length; j++){
+                column[j] = matrix[j][i];
+            }
+            newVectors[i] = new SharedVector(column, VectorOrientation.COLUMN_MAJOR);
+        }
+        this.vectors = newVectors;
     }
 
     public double[][] readRowMajor() {
