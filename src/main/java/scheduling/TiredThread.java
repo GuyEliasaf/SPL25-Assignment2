@@ -56,25 +56,82 @@ public class TiredThread extends Thread implements Comparable<TiredThread> {
      * it throws IllegalStateException.
      */
     public void newTask(Runnable task) {
-       // TODO
+
+        if(task == null){
+            throw new IllegalArgumentException("task cannot be null");
+        }
+        if(!alive.get()){
+            throw new IllegalStateException("worker is not alive");
+        }
+        if(busy.get()){
+            throw new IllegalStateException("worker is busy");
+        }
+
+        if(!handoff.offer(task)){  //offer can't block the current thread and returns false if the queue is full
+            throw new IllegalStateException("worker is not ready to accept a task");
+        }
     }
+    
 
     /**
      * Request this worker to stop after finishing current task.
      * Inserts a poison pill so the worker wakes up and exits.
      */
     public void shutdown() {
-       // TODO
+        try {
+            handoff.put(POISON_PILL); //put waits if necessary for space to become available
+            alive.set(false); // Mark the worker as no longer alive
+        } catch (InterruptedException e) { 
+            Thread.currentThread().interrupt(); 
+        }
     }
 
     @Override
     public void run() {
-       // TODO
+        while (alive.get()) {
+            try {
+                Runnable task = handoff.take(); //remove and return the head of the queue, waiting if necessary until an element becomes available
+
+                if (task == POISON_PILL) { 
+                    break; // Exit the loop to terminate the thread
+                }
+
+                // Update idle time
+                long idleEndTime = System.nanoTime();
+                long idleDuration = idleEndTime - idleStartTime.get();
+                timeIdle.compareAndSet(timeIdle.get(), timeIdle.get() + idleDuration);
+
+                // Execute the task
+                busy.set(true);
+                long startTime = System.nanoTime();
+                try{
+                    task.run();
+                } catch (Exception e){
+                    // Catch any exception to prevent the thread from dying
+                    e.printStackTrace(); // Log the exception
+                }
+                long endTime = System.nanoTime();
+                long taskDuration = endTime - startTime;
+                timeUsed.compareAndSet(timeUsed.get(), timeUsed.get() + taskDuration);
+                busy.set(false);
+
+                // Mark the start of the next idle period
+                idleStartTime.set(System.nanoTime());
+
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
     }
 
     @Override
     public int compareTo(TiredThread o) {
-        // TODO
-        return 0;
+       if(this.getFatigue() < o.getFatigue()){
+           return -1;
+       } else if(this.getFatigue() > o.getFatigue()){
+           return 1;
+       } else {
+           return 0;
+       }
     }
 }
