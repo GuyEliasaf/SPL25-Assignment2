@@ -63,9 +63,6 @@ public class TiredThread extends Thread implements Comparable<TiredThread> {
         if(!alive.get()){
             throw new IllegalStateException("worker is not alive");
         }
-        if(busy.get()){
-            throw new IllegalStateException("worker is busy");
-        }
 
         if(!handoff.offer(task)){  //offer can't block the current thread and returns false if the queue is full
             throw new IllegalStateException("worker is not ready to accept a task");
@@ -78,9 +75,9 @@ public class TiredThread extends Thread implements Comparable<TiredThread> {
      * Inserts a poison pill so the worker wakes up and exits.
      */
     public void shutdown() {
+        alive.set(false); // Mark the worker as no longer alive
         try {
             handoff.put(POISON_PILL); //put waits if necessary for space to become available
-            alive.set(false); // Mark the worker as no longer alive
         } catch (InterruptedException e) { 
             Thread.currentThread().interrupt(); 
         }
@@ -99,7 +96,7 @@ public class TiredThread extends Thread implements Comparable<TiredThread> {
                 // Update idle time
                 long idleEndTime = System.nanoTime();
                 long idleDuration = idleEndTime - idleStartTime.get();
-                timeIdle.compareAndSet(timeIdle.get(), timeIdle.get() + idleDuration);
+                timeIdle.addAndGet(idleDuration);
 
                 // Execute the task
                 busy.set(true);
@@ -112,15 +109,18 @@ public class TiredThread extends Thread implements Comparable<TiredThread> {
                 }
                 long endTime = System.nanoTime();
                 long taskDuration = endTime - startTime;
-                timeUsed.compareAndSet(timeUsed.get(), timeUsed.get() + taskDuration);
+                timeUsed.addAndGet(taskDuration);
                 busy.set(false);
 
                 // Mark the start of the next idle period
                 idleStartTime.set(System.nanoTime());
 
-            } catch (InterruptedException e) {
+            }
+            catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
+
+
         }
     }
 
