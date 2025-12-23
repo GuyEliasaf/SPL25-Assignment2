@@ -16,15 +16,37 @@ public class SharedVector {
     }
 
     public double get(int index) {
-        return vector[index];
+        readLock();
+        try{
+            return vector[index];
+        }
+
+        finally{
+            readUnlock();
+        }
+        
     }
 
     public int length() {
-       return vector.length;
+        readLock();
+        try{
+            return vector.length;
+        }
+
+        finally{
+            readUnlock();
+        }
     }
 
     public VectorOrientation getOrientation() {
-        return orientation;
+         readLock();
+        try{
+            return orientation;
+        }
+
+        finally{
+            readUnlock();
+        }
     }
 
     public void writeLock() {
@@ -49,10 +71,12 @@ public class SharedVector {
         try{
             if (orientation == VectorOrientation.ROW_MAJOR) {
             orientation = VectorOrientation.COLUMN_MAJOR;
-        } else {
+            } 
+            else {
             orientation = VectorOrientation.ROW_MAJOR;
+            }
         }
-        }
+
         finally{
              writeUnlock();
         }
@@ -60,25 +84,47 @@ public class SharedVector {
     }
 
     public void add(SharedVector other) {
-        writeLock();
-        other.readLock();
+        //Resource ordering
+        if(System.identityHashCode(this) < System.identityHashCode(other)){
+            writeLock();
+            other.readLock();
 
-        try {
+            try {
+                //check orientention and length
+                if(!getOrientation().equals(other.getOrientation())) throw new IllegalArgumentException("Vectors must be of the same orientation.");
+                if(this.length() != other.length()) throw new IllegalArgumentException("Vectors must be of the same length to add.");
+                
+                for (int i = 0; i < this.length(); i++) {
+                    this.vector[i] += other.get(i);
+                }
 
-            if(!getOrientation().equals(other.getOrientation())) throw new IllegalArgumentException("Vectors must be of the same orientation.");
-            if(this.length() != other.length()) {throw new IllegalArgumentException("Vectors must be of the same length to add.");
-            
             }
-            for (int i = 0; i < this.length(); i++) {
-                this.vector[i] += other.get(i);
+            finally {
+                other.readUnlock();
+                writeUnlock();
             }
+        }
+        //Resource ordering
+        else{
+            other.readLock();
+            writeLock();
 
+            try {
+                //check orientention and length
+                if(!getOrientation().equals(other.getOrientation())) throw new IllegalArgumentException("Vectors must be of the same orientation.");
+                if(this.length() != other.length()) throw new IllegalArgumentException("Vectors must be of the same length to add.");
+                
+                
+                for (int i = 0; i < this.length(); i++) {
+                    this.vector[i] += other.get(i);
+                }
+
+            }
+            finally {
+                writeUnlock();
+                other.readUnlock();
+            }
         }
-        finally {
-            other.readUnlock();
-            writeUnlock();
-        }
-        
     }
 
     public void negate() {
@@ -90,32 +136,54 @@ public class SharedVector {
     }
 
     public double dot(SharedVector other) {
-        readLock();
-        other.readLock();
+        //Resource ordering 
+        if(System.identityHashCode(this) < System.identityHashCode(other)){
+                readLock();
+            other.readLock();
+            try{
+                if(length() != other.length()) throw new IllegalArgumentException("Vectors must be of the same length to dot.");
+                if(!orientation.equals(VectorOrientation.ROW_MAJOR))
+                {
+                    if(length() != 1) throw new IllegalArgumentException("Vectors can't have more than 1 row while dot.");
+                    return get(0)  * other.get(0); 
+                }
+                if(other.orientation.equals(VectorOrientation.ROW_MAJOR)) throw new IllegalArgumentException("Rows can't be multiply.");
 
-
-        try{
-            if(length() != other.length()) throw new IllegalArgumentException("Vectors must be of the same length to dot.");
-            if(!orientation.equals(VectorOrientation.ROW_MAJOR))
-            {
-                if(length() != 1) throw new IllegalArgumentException("Vectors can't have more than 1 row while dot.");
-                return get(0)  * other.get(0);
+                double ret = 0;
+                for(int i = 0; i < length(); i++)
+                    ret+=  get(i) * other.get(i);
+                return ret;
             }
-            
-            if(other.orientation.equals(VectorOrientation.ROW_MAJOR)) throw new IllegalArgumentException("Rows can't be multiply.");
+            finally{
+                other.readUnlock();
+                readUnlock();
+            }
+            }
+        //Resource ordering    
+        else{   
+            other.readLock();
+            readLock();
+            try{
+                if(length() != other.length()) throw new IllegalArgumentException("Vectors must be of the same length to dot.");
+                if(!orientation.equals(VectorOrientation.ROW_MAJOR))
+                {
+                    if(length() != 1) throw new IllegalArgumentException("Vectors can't have more than 1 row while dot.");
+                    return get(0)  * other.get(0);
+                }
+                
+                if(other.orientation.equals(VectorOrientation.ROW_MAJOR)) throw new IllegalArgumentException("Rows can't be multiply.");
 
-            double ret = 0;
-            for(int i = 0; i < length(); i++)
-                ret+=  get(i) * other.get(i);
-            return ret;
-        }
+                double ret = 0;
+                for(int i = 0; i < length(); i++)
+                    ret+=  get(i) * other.get(i);
+                return ret;
+            }
+            finally{
+                readUnlock();
+                other.readUnlock();
+            }
+            }
 
-
-
-        finally{
-            other.readUnlock();
-            readUnlock();
-        }
         
     }
 
@@ -123,8 +191,10 @@ public class SharedVector {
         writeLock();
         double[][]m = matrix.readRowMajor();
         try{
-            if(length() != m.length) throw new IllegalArgumentException("Vectors must be of the same length to MUL.");
+            if(m == null) throw new IllegalArgumentException("Matrix can't be null for multiplication.");
+            if(length() != m.length) throw new IllegalArgumentException("Vectors length and the number of matrix rows must be of the same to multiplication.");
             if (m.length == 0) throw new IllegalArgumentException("Matrix has no rows.");
+            if(orientation != VectorOrientation.ROW_MAJOR) throw new IllegalArgumentException("Vector must be ROW_MAJOR for vector-matrix multiplication.");
 
             int row = length();
             int column = m[0].length;
