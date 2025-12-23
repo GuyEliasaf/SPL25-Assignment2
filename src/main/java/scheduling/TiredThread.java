@@ -63,10 +63,10 @@ public class TiredThread extends Thread implements Comparable<TiredThread> {
         if(!alive.get()){
             throw new IllegalStateException("worker is not alive");
         }
-
         if(!handoff.offer(task)){  //offer can't block the current thread and returns false if the queue is full
             throw new IllegalStateException("worker is not ready to accept a task");
         }
+
     }
     
 

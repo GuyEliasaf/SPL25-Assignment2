@@ -1,0 +1,132 @@
+-------------------------------------------------------------------------------
+Test set: memory.SharedMatrixTest
+-------------------------------------------------------------------------------
+Tests run: 20, Failures: 7, Errors: 4, Skipped: 0, Time elapsed: 0.365 s <<< FAILURE! -- in memory.SharedMatrixTest
+memory.SharedMatrixTest.testLoadRowMajorNull -- Time elapsed: 0.113 s <<< ERROR!
+java.lang.NullPointerException: Cannot read the array length because "matrix" is null
+	at memory.SharedMatrix.loadRowMajor(SharedMatrix.java:19)
+	at memory.SharedMatrixTest.testLoadRowMajorNull(SharedMatrixTest.java:153)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+memory.SharedMatrixTest.testLoadColumnMajorNull -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.NullPointerException: Cannot load from object array because "matrix" is null
+	at memory.SharedMatrix.loadColumnMajor(SharedMatrix.java:26)
+	at memory.SharedMatrixTest.testLoadColumnMajorNull(SharedMatrixTest.java:79)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+memory.SharedMatrixTest.testLoadColumnMajorNullRow -- Time elapsed: 0.025 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at memory.SharedMatrixTest.testLoadColumnMajorNullRow(SharedMatrixTest.java:93)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.NullPointerException: Cannot load from double array because "matrix[j]" is null
+	at memory.SharedMatrix.loadColumnMajor(SharedMatrix.java:30)
+	at memory.SharedMatrixTest.lambda$testLoadColumnMajorNullRow$2(SharedMatrixTest.java:93)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
+memory.SharedMatrixTest.testReadRowMajorEmpty -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at memory.SharedMatrix.readRowMajor(SharedMatrix.java:40)
+	at memory.SharedMatrixTest.testReadRowMajorEmpty(SharedMatrixTest.java:246)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+memory.SharedMatrixTest.testConstructorEdgeCases -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.NullPointerException: Cannot read the array length because "matrix" is null
+	at memory.SharedMatrix.<init>(SharedMatrix.java:12)
+	at memory.SharedMatrixTest.testConstructorEdgeCases(SharedMatrixTest.java:12)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+memory.SharedMatrixTest.testLoadRowMajorNullRow -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at memory.SharedMatrixTest.testLoadRowMajorNullRow(SharedMatrixTest.java:169)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.NullPointerException: Cannot read the array length because "vector" is null
+	at memory.SharedVector.<init>(SharedVector.java:13)
+	at memory.SharedMatrix.loadRowMajor(SharedMatrix.java:21)
+	at memory.SharedMatrixTest.lambda$testLoadRowMajorNullRow$3(SharedMatrixTest.java:169)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
+memory.SharedMatrixTest.testLoadColumnMajorJagged -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.ArrayIndexOutOfBoundsException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at memory.SharedMatrixTest.testLoadColumnMajorJagged(SharedMatrixTest.java:71)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for length 2
+	at memory.SharedMatrix.loadColumnMajor(SharedMatrix.java:30)
+	at memory.SharedMatrixTest.lambda$testLoadColumnMajorJagged$1(SharedMatrixTest.java:71)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
+memory.SharedMatrixTest.testLoadRowMajorInconsistentRows -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at memory.SharedMatrixTest.testLoadRowMajorInconsistentRows(SharedMatrixTest.java:182)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+memory.SharedMatrixTest.testInconsistentRows -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at memory.SharedMatrixTest.testInconsistentRows(SharedMatrixTest.java:26)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+memory.SharedMatrixTest.testReadFromColumnMajor -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Should return 2 rows ==> expected: <2> but was: <3>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:563)
+	at memory.SharedMatrixTest.testReadFromColumnMajor(SharedMatrixTest.java:234)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+memory.SharedMatrixTest.testReadRowMajorRoundTrip -- Time elapsed: 0.006 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Row 0 mismatch ==> array contents differ at index [1], expected: <2.0> but was: <4.0>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:323)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:147)
+	at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1432)
+	at memory.SharedMatrixTest.testReadRowMajorRoundTrip(SharedMatrixTest.java:333)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+

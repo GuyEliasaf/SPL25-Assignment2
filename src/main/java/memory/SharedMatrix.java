@@ -23,7 +23,6 @@ public class SharedMatrix {
     }
 
     public void loadColumnMajor(double[][] matrix) {
-        
         vectors = new SharedVector[matrix[0].length];
         for (int i = 0; i < matrix[0].length; i++) {
             double[] col = new double[matrix.length];

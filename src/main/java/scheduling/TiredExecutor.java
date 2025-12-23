@@ -23,15 +23,16 @@ public class TiredExecutor {
     public void submit(Runnable task) {
 
         if (task == null) throw new IllegalArgumentException("task is null");
-
         try {
             TiredThread worker = idleMinHeap.take();
             inFlight.incrementAndGet();
-            
             Runnable wrapped = () -> {
                 try {
                     task.run();
                 } 
+                catch(Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 finally {
                     idleMinHeap.offer(worker);
 
@@ -43,9 +44,10 @@ public class TiredExecutor {
                     }
                 }
             };
-
+            
             worker.newTask(wrapped); 
-        } catch (InterruptedException e) {
+            
+        } catch (Exception e) {
             Thread.currentThread().interrupt();
         }
         

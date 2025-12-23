@@ -99,6 +99,10 @@ public class SharedVector {
                 }
 
             }
+
+            catch(Exception e){
+                System.out.print(e.getMessage());
+            }
             finally {
                 other.readUnlock();
                 writeUnlock();
@@ -138,7 +142,7 @@ public class SharedVector {
     public double dot(SharedVector other) {
         //Resource ordering 
         if(System.identityHashCode(this) < System.identityHashCode(other)){
-                readLock();
+            readLock();
             other.readLock();
             try{
                 if(length() != other.length()) throw new IllegalArgumentException("Vectors must be of the same length to dot.");
