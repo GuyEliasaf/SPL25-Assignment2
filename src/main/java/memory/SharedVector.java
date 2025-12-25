@@ -82,48 +82,24 @@ public class SharedVector {
         }
        
     }
-
     public void add(SharedVector other) {
-        //Resource ordering
-        if(System.identityHashCode(this) < System.identityHashCode(other)){
-            writeLock();
-            other.readLock();
+        if (other == null) throw new IllegalArgumentException("Other vector cannot be null");
+        if (this.length() != other.length()) throw new IllegalArgumentException("Vectors must be of the same length to add.");
+        if (this.getOrientation() != other.getOrientation()) throw new IllegalArgumentException("Vectors must be of the same orientation.");
 
-            try {
-                //check orientention and length
-                if(!getOrientation().equals(other.getOrientation())) throw new IllegalArgumentException("Vectors must be of the same orientation.");
-                if(this.length() != other.length()) throw new IllegalArgumentException("Vectors must be of the same length to add.");
-                
-                for (int i = 0; i < this.length(); i++) {
-                    this.vector[i] += other.get(i);
-                }
+        // Deadlock prevention 
+        SharedVector first = System.identityHashCode(this) < System.identityHashCode(other) ? this : other;
+        SharedVector second = first == this ? other : this;
 
+        first.writeLock(); 
+        second.readLock();
+        try {
+            for (int i = 0; i < this.vector.length; i++) {
+                this.vector[i] += other.get(i);
             }
-            finally {
-                other.readUnlock();
-                writeUnlock();
-            }
-        }
-        //Resource ordering
-        else{
-            other.readLock();
-            writeLock();
-
-            try {
-                //check orientention and length
-                if(!getOrientation().equals(other.getOrientation())) throw new IllegalArgumentException("Vectors must be of the same orientation.");
-                if(this.length() != other.length()) throw new IllegalArgumentException("Vectors must be of the same length to add.");
-                
-                
-                for (int i = 0; i < this.length(); i++) {
-                    this.vector[i] += other.get(i);
-                }
-
-            }
-            finally {
-                writeUnlock();
-                other.readUnlock();
-            }
+        } finally {
+            second.readUnlock();
+            first.writeUnlock();
         }
     }
 
@@ -137,8 +113,9 @@ public class SharedVector {
 
     public double dot(SharedVector other) {
         //Resource ordering 
+        if (other == null) throw new IllegalArgumentException("Other vector cannot be null");
         if(System.identityHashCode(this) < System.identityHashCode(other)){
-                readLock();
+            readLock();
             other.readLock();
             try{
                 if(length() != other.length()) throw new IllegalArgumentException("Vectors must be of the same length to dot.");
@@ -188,10 +165,18 @@ public class SharedVector {
     }
 
     public void vecMatMul(SharedMatrix matrix) {
+        if (matrix == null) throw new IllegalArgumentException("Matrix cannot be null");
         writeLock();
-        double[][]m = matrix.readRowMajor();
+        double[][] m = matrix.readRowMajor();
+        if (m == null || m.length == 0) {
+            this.vector = new double[0];
+            return; 
+        }
+
+        if (this.length() != m.length) {
+            throw new IllegalArgumentException("Dimensions mismatch");
+        }
         try{
-            if(m == null) throw new IllegalArgumentException("Matrix can't be null for multiplication.");
             if(length() != m.length) throw new IllegalArgumentException("Vectors length and the number of matrix rows must be of the same to multiplication.");
             if (m.length == 0) throw new IllegalArgumentException("Matrix has no rows.");
             if(orientation != VectorOrientation.ROW_MAJOR) throw new IllegalArgumentException("Vector must be ROW_MAJOR for vector-matrix multiplication.");
