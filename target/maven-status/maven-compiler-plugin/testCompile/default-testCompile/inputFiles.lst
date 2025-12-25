@@ -1,2 +1,5 @@
+/workspaces/Skeleton/src/test/java/spl/lae/LinearAlgebraEngineTest.java
 /workspaces/Skeleton/src/test/java/memory/SharedVectorTest.java
+/workspaces/Skeleton/src/test/java/scheduling/TiredExecutorTest.java
 /workspaces/Skeleton/src/test/java/memory/SharedMatrixTest.java
+/workspaces/Skeleton/src/test/java/scheduling/TiredThreadTest.java

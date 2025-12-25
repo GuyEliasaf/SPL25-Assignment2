@@ -33,6 +33,8 @@ public class Main {
     LinearAlgebraEngine LAE = new LinearAlgebraEngine(numberOfThreads);
 
     double[][] matrix = LAE.run(computationRoot).getMatrix();
+    System.out.println("--- Worker Statistics Report ---");
+    System.out.println(LAE.getWorkerReport());
     OutputWriter.write(matrix, args[2]);
 
 }
