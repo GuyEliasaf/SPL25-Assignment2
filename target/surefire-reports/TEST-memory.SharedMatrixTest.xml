@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="memory.SharedMatrixTest" time="0.365" tests="20" errors="4" skipped="0" failures="7">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="memory.SharedMatrixTest" time="0.706" tests="20" errors="4" skipped="0" failures="7">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/msopenjdk-current/lib"/>
-    <property name="sun.java.command" value="/workspaces/Skeleton/target/surefire/surefirebooter-20251223135802111_3.jar /workspaces/Skeleton/target/surefire 2025-12-23T13-58-00_347-jvmRun1 surefire-20251223135802111_1tmp surefire_0-20251223135802111_2tmp"/>
+    <property name="sun.java.command" value="/workspaces/Skeleton/target/surefire/surefirebooter-20251225131057213_3.jar /workspaces/Skeleton/target/surefire 2025-12-25T13-10-56_929-jvmRun1 surefire-20251225131057213_1tmp surefire_0-20251225131057213_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/workspaces/Skeleton/target/test-classes:/workspaces/Skeleton/target/classes:/home/vscode/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/home/vscode/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/home/vscode/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/vscode/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/home/vscode/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/vscode/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/home/vscode/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/home/vscode/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/home/vscode/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.1/jackson-databind-2.17.1.jar:/home/vscode/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.1/jackson-annotations-2.17.1.jar:/home/vscode/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/workspaces/Skeleton/target/surefire/surefirebooter-20251223135802111_3.jar"/>
+    <property name="surefire.real.class.path" value="/workspaces/Skeleton/target/surefire/surefirebooter-20251225131057213_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.8+9-LTS"/>
     <property name="user.name" value="vscode"/>
@@ -54,7 +54,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testLoadRowMajorNull" classname="memory.SharedMatrixTest" time="0.113">
+  <testcase name="testLoadRowMajorNull" classname="memory.SharedMatrixTest" time="0.286">
     <error message="Cannot read the array length because &quot;matrix&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot read the array length because "matrix" is null
 	at memory.SharedMatrix.loadRowMajor(SharedMatrix.java:19)
 	at memory.SharedMatrixTest.testLoadRowMajorNull(SharedMatrixTest.java:153)
@@ -63,7 +63,7 @@
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 ]]></error>
   </testcase>
-  <testcase name="testLoadColumnMajorNull" classname="memory.SharedMatrixTest" time="0.003">
+  <testcase name="testLoadColumnMajorNull" classname="memory.SharedMatrixTest" time="0.005">
     <error message="Cannot load from object array because &quot;matrix&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot load from object array because "matrix" is null
 	at memory.SharedMatrix.loadColumnMajor(SharedMatrix.java:26)
 	at memory.SharedMatrixTest.testLoadColumnMajorNull(SharedMatrixTest.java:79)
@@ -72,9 +72,9 @@
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 ]]></error>
   </testcase>
-  <testcase name="testReadFromRowMajor" classname="memory.SharedMatrixTest" time="0.029"/>
-  <testcase name="testLoadRowMajorLarge" classname="memory.SharedMatrixTest" time="0.001"/>
-  <testcase name="testLoadColumnMajorNullRow" classname="memory.SharedMatrixTest" time="0.025">
+  <testcase name="testReadFromRowMajor" classname="memory.SharedMatrixTest" time="0.041"/>
+  <testcase name="testLoadRowMajorLarge" classname="memory.SharedMatrixTest" time="0.004"/>
+  <testcase name="testLoadColumnMajorNullRow" classname="memory.SharedMatrixTest" time="0.038">
     <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.NullPointerException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
@@ -86,12 +86,12 @@
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 Caused by: java.lang.NullPointerException: Cannot load from double array because "matrix[j]" is null
 	at memory.SharedMatrix.loadColumnMajor(SharedMatrix.java:30)
-	at memory.SharedMatrixTest.lambda$testLoadColumnMajorNullRow$2(SharedMatrixTest.java:93)
+	at memory.SharedMatrixTest.lambda$2(SharedMatrixTest.java:93)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
 	... 6 more
 ]]></failure>
   </testcase>
-  <testcase name="testReadRowMajorEmpty" classname="memory.SharedMatrixTest" time="0.002">
+  <testcase name="testReadRowMajorEmpty" classname="memory.SharedMatrixTest" time="0.008">
     <error message="Index 0 out of bounds for length 0" type="java.lang.ArrayIndexOutOfBoundsException"><![CDATA[java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
 	at memory.SharedMatrix.readRowMajor(SharedMatrix.java:40)
 	at memory.SharedMatrixTest.testReadRowMajorEmpty(SharedMatrixTest.java:246)
@@ -100,9 +100,9 @@ Caused by: java.lang.NullPointerException: Cannot load from double array because
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 ]]></error>
   </testcase>
-  <testcase name="testLoadColumnMajorSuccess" classname="memory.SharedMatrixTest" time="0.0"/>
-  <testcase name="testReadRowMajorSnapshotSafety" classname="memory.SharedMatrixTest" time="0.006"/>
-  <testcase name="testConstructorEdgeCases" classname="memory.SharedMatrixTest" time="0.001">
+  <testcase name="testLoadColumnMajorSuccess" classname="memory.SharedMatrixTest" time="0.002"/>
+  <testcase name="testReadRowMajorSnapshotSafety" classname="memory.SharedMatrixTest" time="0.009"/>
+  <testcase name="testConstructorEdgeCases" classname="memory.SharedMatrixTest" time="0.003">
     <error message="Cannot read the array length because &quot;matrix&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot read the array length because "matrix" is null
 	at memory.SharedMatrix.<init>(SharedMatrix.java:12)
 	at memory.SharedMatrixTest.testConstructorEdgeCases(SharedMatrixTest.java:12)
@@ -111,7 +111,7 @@ Caused by: java.lang.NullPointerException: Cannot load from double array because
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 ]]></error>
   </testcase>
-  <testcase name="testLoadRowMajorNullRow" classname="memory.SharedMatrixTest" time="0.002">
+  <testcase name="testLoadRowMajorNullRow" classname="memory.SharedMatrixTest" time="0.006">
     <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.NullPointerException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
@@ -124,13 +124,13 @@ Caused by: java.lang.NullPointerException: Cannot load from double array because
 Caused by: java.lang.NullPointerException: Cannot read the array length because "vector" is null
 	at memory.SharedVector.<init>(SharedVector.java:13)
 	at memory.SharedMatrix.loadRowMajor(SharedMatrix.java:21)
-	at memory.SharedMatrixTest.lambda$testLoadRowMajorNullRow$3(SharedMatrixTest.java:169)
+	at memory.SharedMatrixTest.lambda$3(SharedMatrixTest.java:169)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
 	... 6 more
 ]]></failure>
   </testcase>
-  <testcase name="testLoadRowMajorSuccess" classname="memory.SharedMatrixTest" time="0.001"/>
-  <testcase name="testLoadColumnMajorJagged" classname="memory.SharedMatrixTest" time="0.002">
+  <testcase name="testLoadRowMajorSuccess" classname="memory.SharedMatrixTest" time="0.002"/>
+  <testcase name="testLoadColumnMajorJagged" classname="memory.SharedMatrixTest" time="0.01">
     <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.ArrayIndexOutOfBoundsException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.ArrayIndexOutOfBoundsException>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
@@ -142,14 +142,14 @@ Caused by: java.lang.NullPointerException: Cannot read the array length because 
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for length 2
 	at memory.SharedMatrix.loadColumnMajor(SharedMatrix.java:30)
-	at memory.SharedMatrixTest.lambda$testLoadColumnMajorJagged$1(SharedMatrixTest.java:71)
+	at memory.SharedMatrixTest.lambda$1(SharedMatrixTest.java:71)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
 	... 6 more
 ]]></failure>
   </testcase>
-  <testcase name="testLoadColumnMajorSquare" classname="memory.SharedMatrixTest" time="0.001"/>
-  <testcase name="testLoadRowMajorEmptyArray" classname="memory.SharedMatrixTest" time="0.0"/>
-  <testcase name="testLoadRowMajorInconsistentRows" classname="memory.SharedMatrixTest" time="0.002">
+  <testcase name="testLoadColumnMajorSquare" classname="memory.SharedMatrixTest" time="0.002"/>
+  <testcase name="testLoadRowMajorEmptyArray" classname="memory.SharedMatrixTest" time="0.001"/>
+  <testcase name="testLoadRowMajorInconsistentRows" classname="memory.SharedMatrixTest" time="0.004">
     <failure message="Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown." type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
@@ -161,7 +161,7 @@ Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for l
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 ]]></failure>
   </testcase>
-  <testcase name="testInconsistentRows" classname="memory.SharedMatrixTest" time="0.001">
+  <testcase name="testInconsistentRows" classname="memory.SharedMatrixTest" time="0.004">
     <failure message="Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown." type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
@@ -186,7 +186,7 @@ Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for l
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 ]]></failure>
   </testcase>
-  <testcase name="testReadRowMajorRoundTrip" classname="memory.SharedMatrixTest" time="0.006">
+  <testcase name="testReadRowMajorRoundTrip" classname="memory.SharedMatrixTest" time="0.013">
     <failure message="Row 0 mismatch ==&gt; array contents differ at index [1], expected: &lt;2.0&gt; but was: &lt;4.0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Row 0 mismatch ==> array contents differ at index [1], expected: <2.0> but was: <4.0>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)

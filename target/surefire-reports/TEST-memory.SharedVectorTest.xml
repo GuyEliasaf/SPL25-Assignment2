@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="memory.SharedVectorTest" time="0.052" tests="22" errors="1" skipped="0" failures="2">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="memory.SharedVectorTest" time="0.11" tests="22" errors="1" skipped="0" failures="2">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/msopenjdk-current/lib"/>
-    <property name="sun.java.command" value="/workspaces/Skeleton/target/surefire/surefirebooter-20251223135802111_3.jar /workspaces/Skeleton/target/surefire 2025-12-23T13-58-00_347-jvmRun1 surefire-20251223135802111_1tmp surefire_0-20251223135802111_2tmp"/>
+    <property name="sun.java.command" value="/workspaces/Skeleton/target/surefire/surefirebooter-20251225131057213_3.jar /workspaces/Skeleton/target/surefire 2025-12-25T13-10-56_929-jvmRun1 surefire-20251225131057213_1tmp surefire_0-20251225131057213_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/workspaces/Skeleton/target/test-classes:/workspaces/Skeleton/target/classes:/home/vscode/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/home/vscode/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/home/vscode/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/vscode/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/home/vscode/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/vscode/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/home/vscode/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/home/vscode/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/home/vscode/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.1/jackson-databind-2.17.1.jar:/home/vscode/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.1/jackson-annotations-2.17.1.jar:/home/vscode/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/workspaces/Skeleton/target/surefire/surefirebooter-20251223135802111_3.jar"/>
+    <property name="surefire.real.class.path" value="/workspaces/Skeleton/target/surefire/surefirebooter-20251225131057213_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.8+9-LTS"/>
     <property name="user.name" value="vscode"/>
@@ -55,10 +55,10 @@
     <property name="java.class.version" value="65.0"/>
   </properties>
   <testcase name="testVecMatMulLarge" classname="memory.SharedVectorTest" time="0.002"/>
-  <testcase name="testDotSuccess1" classname="memory.SharedVectorTest" time="0.002"/>
-  <testcase name="testDotSuccess2" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="testDotSuccess1" classname="memory.SharedVectorTest" time="0.003"/>
+  <testcase name="testDotSuccess2" classname="memory.SharedVectorTest" time="0.002"/>
   <testcase name="testDotLargeVectors" classname="memory.SharedVectorTest" time="0.001"/>
-  <testcase name="testVecMatMulEmptyMatrix" classname="memory.SharedVectorTest" time="0.002">
+  <testcase name="testVecMatMulEmptyMatrix" classname="memory.SharedVectorTest" time="0.003">
     <error message="Index 0 out of bounds for length 0" type="java.lang.ArrayIndexOutOfBoundsException"><![CDATA[java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
 	at memory.SharedMatrix.readRowMajor(SharedMatrix.java:40)
 	at memory.SharedVector.vecMatMul(SharedVector.java:196)
@@ -68,17 +68,17 @@
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 ]]></error>
   </testcase>
-  <testcase name="testVecMatMulSingleColumn" classname="memory.SharedVectorTest" time="0.001"/>
-  <testcase name="testDotFirstNotRow" classname="memory.SharedVectorTest" time="0.001"/>
-  <testcase name="testAddLargeVectors" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="testVecMatMulSingleColumn" classname="memory.SharedVectorTest" time="0.003"/>
+  <testcase name="testDotFirstNotRow" classname="memory.SharedVectorTest" time="0.003"/>
+  <testcase name="testAddLargeVectors" classname="memory.SharedVectorTest" time="0.002"/>
   <testcase name="testVecMatMulWrongOrientation" classname="memory.SharedVectorTest" time="0.001"/>
-  <testcase name="testDotMismatchLength" classname="memory.SharedVectorTest" time="0.001"/>
-  <testcase name="testAddSucces" classname="memory.SharedVectorTest" time="0.0"/>
-  <testcase name="testVecMatMulIdentity" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="testDotMismatchLength" classname="memory.SharedVectorTest" time="0.002"/>
+  <testcase name="testAddSucces" classname="memory.SharedVectorTest" time="0.002"/>
+  <testcase name="testVecMatMulIdentity" classname="memory.SharedVectorTest" time="0.003"/>
   <testcase name="testAddMisMatchLength" classname="memory.SharedVectorTest" time="0.002"/>
-  <testcase name="testAddMisMatchMajor" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="testAddMisMatchMajor" classname="memory.SharedVectorTest" time="0.002"/>
   <testcase name="testVecMatMulDimensionMismatch" classname="memory.SharedVectorTest" time="0.002"/>
-  <testcase name="testDotNull" classname="memory.SharedVectorTest" time="0.004">
+  <testcase name="testDotNull" classname="memory.SharedVectorTest" time="0.006">
     <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.NullPointerException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
@@ -90,14 +90,14 @@
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 Caused by: java.lang.NullPointerException: Cannot invoke "memory.SharedVector.readLock()" because "other" is null
 	at memory.SharedVector.dot(SharedVector.java:168)
-	at memory.SharedVectorTest.lambda$testDotNull$2(SharedVectorTest.java:81)
+	at memory.SharedVectorTest.lambda$2(SharedVectorTest.java:81)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
 	... 6 more
 ]]></failure>
   </testcase>
-  <testcase name="testNegate" classname="memory.SharedVectorTest" time="0.001"/>
-  <testcase name="testTranspose" classname="memory.SharedVectorTest" time="0.0"/>
-  <testcase name="testVecMatMulNull" classname="memory.SharedVectorTest" time="0.002">
+  <testcase name="testNegate" classname="memory.SharedVectorTest" time="0.003"/>
+  <testcase name="testTranspose" classname="memory.SharedVectorTest" time="0.002"/>
+  <testcase name="testVecMatMulNull" classname="memory.SharedVectorTest" time="0.005">
     <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.NullPointerException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
@@ -109,12 +109,12 @@ Caused by: java.lang.NullPointerException: Cannot invoke "memory.SharedVector.re
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 Caused by: java.lang.NullPointerException: Cannot invoke "memory.SharedMatrix.readRowMajor()" because "matrix" is null
 	at memory.SharedVector.vecMatMul(SharedVector.java:196)
-	at memory.SharedVectorTest.lambda$testVecMatMulNull$8(SharedVectorTest.java:238)
+	at memory.SharedVectorTest.lambda$8(SharedVectorTest.java:238)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
 	... 6 more
 ]]></failure>
   </testcase>
   <testcase name="testDotSecondNotColumn" classname="memory.SharedVectorTest" time="0.002"/>
-  <testcase name="testVecMatMulSingleRow" classname="memory.SharedVectorTest" time="0.001"/>
-  <testcase name="testVecMatMulRectangular" classname="memory.SharedVectorTest" time="0.009"/>
+  <testcase name="testVecMatMulSingleRow" classname="memory.SharedVectorTest" time="0.002"/>
+  <testcase name="testVecMatMulRectangular" classname="memory.SharedVectorTest" time="0.017"/>
 </testsuite>

@@ -16,6 +16,7 @@ public class SharedMatrix {
     }
 
     public void loadRowMajor(double[][] matrix) {
+        if(matrix == null) throw new IllegalStateException("Matrix can't be null");
         vectors = new SharedVector[matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             vectors[i] = new SharedVector(matrix[i], VectorOrientation.ROW_MAJOR);
@@ -23,6 +24,7 @@ public class SharedMatrix {
     }
 
     public void loadColumnMajor(double[][] matrix) {
+        if(matrix == null) throw new IllegalStateException("Matrix can't be null");
         vectors = new SharedVector[matrix[0].length];
         for (int i = 0; i < matrix[0].length; i++) {
             double[] col = new double[matrix.length];

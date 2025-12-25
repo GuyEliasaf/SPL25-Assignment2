@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: memory.SharedVectorTest
 -------------------------------------------------------------------------------
-Tests run: 22, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.052 s <<< FAILURE! -- in memory.SharedVectorTest
-memory.SharedVectorTest.testVecMatMulEmptyMatrix -- Time elapsed: 0.002 s <<< ERROR!
+Tests run: 22, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.110 s <<< FAILURE! -- in memory.SharedVectorTest
+memory.SharedVectorTest.testVecMatMulEmptyMatrix -- Time elapsed: 0.003 s <<< ERROR!
 java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
 	at memory.SharedMatrix.readRowMajor(SharedMatrix.java:40)
 	at memory.SharedVector.vecMatMul(SharedVector.java:196)
@@ -11,7 +11,7 @@ java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 
-memory.SharedVectorTest.testDotNull -- Time elapsed: 0.004 s <<< FAILURE!
+memory.SharedVectorTest.testDotNull -- Time elapsed: 0.006 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
@@ -23,11 +23,11 @@ org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected:
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 Caused by: java.lang.NullPointerException: Cannot invoke "memory.SharedVector.readLock()" because "other" is null
 	at memory.SharedVector.dot(SharedVector.java:168)
-	at memory.SharedVectorTest.lambda$testDotNull$2(SharedVectorTest.java:81)
+	at memory.SharedVectorTest.lambda$2(SharedVectorTest.java:81)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
 	... 6 more
 
-memory.SharedVectorTest.testVecMatMulNull -- Time elapsed: 0.002 s <<< FAILURE!
+memory.SharedVectorTest.testVecMatMulNull -- Time elapsed: 0.005 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
@@ -39,7 +39,7 @@ org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected:
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 Caused by: java.lang.NullPointerException: Cannot invoke "memory.SharedMatrix.readRowMajor()" because "matrix" is null
 	at memory.SharedVector.vecMatMul(SharedVector.java:196)
-	at memory.SharedVectorTest.lambda$testVecMatMulNull$8(SharedVectorTest.java:238)
+	at memory.SharedVectorTest.lambda$8(SharedVectorTest.java:238)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
 	... 6 more
 
