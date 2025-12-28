@@ -27,6 +27,7 @@ public class TiredExecutor {
             TiredThread worker = idleMinHeap.take();
             inFlight.incrementAndGet();
             Runnable wrapped = () -> {
+                long startTime = System.nanoTime();  
                 try {
                     task.run();
                 } 
@@ -34,7 +35,9 @@ public class TiredExecutor {
                     System.out.println(e.getMessage());
                 }
                 finally {
-                    idleMinHeap.offer(worker);
+                    long duration = System.nanoTime() - startTime;
+                    worker.addTimeUsed(duration);
+                    idleMinHeap.offer(worker); //adding back to the heap by fatigue (comparable implemented at TiredThread)
 
                     int left = inFlight.decrementAndGet();
                     if (left == 0) {
