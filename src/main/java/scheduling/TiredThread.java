@@ -90,7 +90,10 @@ public class TiredThread extends Thread implements Comparable<TiredThread> {
                 Runnable task = handoff.take(); //remove and return the head of the queue, waiting if necessary until an element becomes available
 
                 if (task == POISON_PILL) { 
-                    break; // Exit the loop to terminate the thread
+                    long idleDuration = System.nanoTime() - idleStartTime.get();
+                    timeIdle.addAndGet(idleDuration);
+                    busy.set(false);
+                     break; // Exit the loop to terminate the thread
                 }
 
                 // Update idle time
@@ -100,7 +103,6 @@ public class TiredThread extends Thread implements Comparable<TiredThread> {
 
                 // Execute the task
                 busy.set(true);
-                long startTime = System.nanoTime();
                 try{
                     task.run();
                 } catch (Exception e){
@@ -108,12 +110,10 @@ public class TiredThread extends Thread implements Comparable<TiredThread> {
                     e.printStackTrace(); // Log the exception
                 }
                 long endTime = System.nanoTime();
-                long taskDuration = endTime - startTime;
-                timeUsed.addAndGet(taskDuration);
                 busy.set(false);
 
                 // Mark the start of the next idle period
-                idleStartTime.set(System.nanoTime());
+                idleStartTime.set(endTime);
 
             }
             catch (InterruptedException e) {
@@ -133,5 +133,9 @@ public class TiredThread extends Thread implements Comparable<TiredThread> {
        } else {
            return 0;
        }
+    }
+
+    public void addTimeUsed(long duration){
+        timeUsed.addAndGet(duration);
     }
 }
