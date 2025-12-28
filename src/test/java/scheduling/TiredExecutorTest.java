@@ -13,7 +13,7 @@ public class TiredExecutorTest {
 
     @BeforeEach
     void setUp() {
-        executor = new TiredExecutor(2); // שני עובדים
+        executor = new TiredExecutor(2); 
     }
 
     @Test
@@ -34,7 +34,6 @@ public class TiredExecutorTest {
             });
         }
 
-        // המתודה צריכה לחסום עד שכל 10 המשימות מסתיימות 
         executor.submitAll(tasks);
         assertEquals(numTasks, counter.get(), "submitAll returned before all tasks finished");
         
@@ -43,25 +42,17 @@ public class TiredExecutorTest {
 
     @Test
     void testFairSchedulingSelection() throws InterruptedException {
-        // עובד אחד עם פקטור עייפות נמוך ועובד אחד עם גבוה
-        // הערה: בקוד שלך הפקטור אקראי, אז נבדוק את הלוגיקה דרך הדיווח
         
-        // הגשת משימה אחת
         executor.submit(() -> {
             try { Thread.sleep(100); } catch (InterruptedException e) {}
         });
 
-        // המתנה לסיום המשימה וחזרת העובד לתור
         Thread.sleep(200);
 
-        // המשימה הבאה חייבת להינתן לעובד עם העייפות המינימלית 
-        // מכיוון שהעובד הראשון עבד, השני (עם עייפות 0) הוא זה שצריך להיבחר.
         executor.submit(() -> {
-            // עבודה
         });
 
         String report = executor.getWorkerReport();
-        // נוודא ששני העובדים עבדו (חלוקה הוגנת)
         assertTrue(report.contains("Time Used"), "Worker report should show activity");
         
         executor.shutdown();
@@ -70,7 +61,6 @@ public class TiredExecutorTest {
     @Test
     void testShutdownCleansUp() throws InterruptedException {
         executor.shutdown();
-        // אם המתודה מסתיימת ללא שגיאה, זה אומר שהתהליכונים קיבלו Poison Pill ויצאו [cite: 323]
         assertTrue(true);
     }
 }
