@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="memory.SharedVectorTest" time="0.12" tests="22" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="memory.SharedVectorTest" time="0.047" tests="26" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/msopenjdk-current/lib"/>
-    <property name="sun.java.command" value="/workspaces/Skeleton/target/surefire/surefirebooter-20251228195238506_3.jar /workspaces/Skeleton/target/surefire 2025-12-28T19-52-38_248-jvmRun1 surefire-20251228195238506_1tmp surefire_0-20251228195238506_2tmp"/>
+    <property name="sun.java.command" value="/workspaces/Skeleton/target/surefire/surefirebooter-20251229171919348_3.jar /workspaces/Skeleton/target/surefire 2025-12-29T17-19-19_060-jvmRun1 surefire-20251229171919348_1tmp surefire_0-20251229171919348_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/workspaces/Skeleton/target/test-classes:/workspaces/Skeleton/target/classes:/home/vscode/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/home/vscode/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/home/vscode/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/vscode/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/home/vscode/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/vscode/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/home/vscode/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/home/vscode/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/home/vscode/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.1/jackson-databind-2.17.1.jar:/home/vscode/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.1/jackson-annotations-2.17.1.jar:/home/vscode/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/workspaces/Skeleton/target/surefire/surefirebooter-20251228195238506_3.jar"/>
+    <property name="surefire.real.class.path" value="/workspaces/Skeleton/target/surefire/surefirebooter-20251229171919348_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.8+9-LTS"/>
     <property name="user.name" value="vscode"/>
@@ -54,26 +54,30 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testVecMatMulLarge" classname="memory.SharedVectorTest" time="0.003"/>
-  <testcase name="testDotSuccess1" classname="memory.SharedVectorTest" time="0.002"/>
-  <testcase name="testDotSuccess2" classname="memory.SharedVectorTest" time="0.002"/>
-  <testcase name="testDotLargeVectors" classname="memory.SharedVectorTest" time="0.001"/>
-  <testcase name="testVecMatMulEmptyMatrix" classname="memory.SharedVectorTest" time="0.002"/>
-  <testcase name="testVecMatMulSingleColumn" classname="memory.SharedVectorTest" time="0.003"/>
-  <testcase name="testDotFirstNotRow" classname="memory.SharedVectorTest" time="0.003"/>
-  <testcase name="testAddLargeVectors" classname="memory.SharedVectorTest" time="0.002"/>
-  <testcase name="testVecMatMulWrongOrientation" classname="memory.SharedVectorTest" time="0.003"/>
-  <testcase name="testDotMismatchLength" classname="memory.SharedVectorTest" time="0.004"/>
-  <testcase name="testAddSucces" classname="memory.SharedVectorTest" time="0.002"/>
-  <testcase name="testVecMatMulIdentity" classname="memory.SharedVectorTest" time="0.003"/>
-  <testcase name="testAddMisMatchLength" classname="memory.SharedVectorTest" time="0.003"/>
-  <testcase name="testAddMisMatchMajor" classname="memory.SharedVectorTest" time="0.003"/>
-  <testcase name="testVecMatMulDimensionMismatch" classname="memory.SharedVectorTest" time="0.004"/>
-  <testcase name="testDotNull" classname="memory.SharedVectorTest" time="0.002"/>
-  <testcase name="testNegate" classname="memory.SharedVectorTest" time="0.012"/>
-  <testcase name="testTranspose" classname="memory.SharedVectorTest" time="0.004"/>
-  <testcase name="testVecMatMulNull" classname="memory.SharedVectorTest" time="0.004"/>
-  <testcase name="testDotSecondNotColumn" classname="memory.SharedVectorTest" time="0.004"/>
-  <testcase name="testVecMatMulSingleRow" classname="memory.SharedVectorTest" time="0.003"/>
-  <testcase name="testVecMatMulRectangular" classname="memory.SharedVectorTest" time="0.002"/>
+  <testcase name="addNullOtherThrows" classname="memory.SharedVectorTest" time="0.002"/>
+  <testcase name="lockUnlockMethods" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="addMismatchedLengthThrows" classname="memory.SharedVectorTest" time="0.002"/>
+  <testcase name="lengthAndGet" classname="memory.SharedVectorTest" time="0.002"/>
+  <testcase name="vecMatMulDimensionMismatchThrows" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="dotSingleElementNonRow" classname="memory.SharedVectorTest" time="0.0"/>
+  <testcase name="addMismatchedOrientationThrows" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="vecMatMulIdentity" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="addNormalCase" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="constructorZeroLengthThrows" classname="memory.SharedVectorTest" time="0.002"/>
+  <testcase name="transposeBehavior" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="vecMatMulNullThrows" classname="memory.SharedVectorTest" time="0.0"/>
+  <testcase name="vecMatMulRectangular" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="vecMatMulWrongOrientationThrows" classname="memory.SharedVectorTest" time="0.002"/>
+  <testcase name="vecMatMulSingleRow" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="dotNullThrows" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="dotSecondNotColumnThrows" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="dotBasicComputation" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="addLargeVectors" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="constructorNullVectorThrows" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="getIndexOutOfBounds" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="dotFirstNotRowThrows" classname="memory.SharedVectorTest" time="0.0"/>
+  <testcase name="negateBehavior" classname="memory.SharedVectorTest" time="0.0"/>
+  <testcase name="dotLarge" classname="memory.SharedVectorTest" time="0.001"/>
+  <testcase name="dotMismatchedLengthsThrows" classname="memory.SharedVectorTest" time="0.002"/>
+  <testcase name="vecMatMulEmptyMatrixYieldsEmpty" classname="memory.SharedVectorTest" time="0.002"/>
 </testsuite>
